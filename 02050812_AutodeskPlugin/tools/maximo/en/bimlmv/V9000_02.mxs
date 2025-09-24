@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updatescript version="7.1.0.0">
+	<app apptype="webclient" id="plusxlocation">
+		<move child="model_location_view" container="clientarea"/>
+		<modify control="model_location_view">
+			<clear property="height"/>
+			<set property="controlleft" value="260"/>
+			<set property="controltarget" value="bimtarget1"/>
+			<set property="controltop" value="200"/>
+			<set property="eventclass" value="psdi.webclient.beans.bim.viewer.BIMViewerEventBean"/>
+			<set property="sigoption" value="BIMVIEWER"/>
+		</modify>
+		<add container="view_l" control="sectionrow">
+			<set property="id" value="view_1_2"/>
+		</add>
+		<add container="view_1_2" control="sectioncol">
+			<set property="id" value="view_1_2_1"/>
+		</add>
+		<add container="view_1_2_1" control="section">
+			<set property="id" value="view_1_2_1_1"/>
+		</add>
+		<add container="view_1_2_1_1" control="bimtarget">
+			<set property="id" value="bimtarget1"/>
+		</add>
+		<add before="view_1_2" container="view_l" control="sectionrow">
+			<set property="id" value="bim_markup_help_row"/>
+		</add>
+		<add container="bim_markup_help_row" control="sectioncol">
+			<set property="id" value="bim_markup_help_col"/>
+		</add>
+		<add container="bim_markup_help_col" control="section">
+			<set property="id" value="bim_markup_help_sec"/>
+		</add>
+		<move child="bim_markup_help" container="bim_markup_help_sec"/>
+		<remove container="clientarea" control="model_viewer"/>
+		<remove container="view" control="view_1_1_4"/>
+	</app>
+</updatescript>

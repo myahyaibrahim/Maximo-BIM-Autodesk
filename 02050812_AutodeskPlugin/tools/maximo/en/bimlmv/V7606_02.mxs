@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * IBM Confidential
+ *
+ * OCO Source Materials
+ *
+ * 5737-M60, 5737-M66
+ *
+ * (C) COPYRIGHT IBM CORP. 2009-2021
+ *
+ * The source code for this program is not published or otherwise
+ * divested of its trade secrets, irrespective of what has been
+ * deposited with the U.S. Copyright Office.
+-->
+<updatescript version="">
+	<systemlib apptype="webclient" id="menus">
+		<add before="assetmain3" container="assetmain" control="menuitem">
+			<set property="event" value="bim_asset_select"/>
+			<set property="id" value="assetmain2b"/>
+			<set property="image" value="bim/menu_icon_model.gif"/>
+			<set property="label" value="Building model"/>
+			<set property="sigoption" value="BIMLOOKUP"/>
+		</add>
+		<add container="ss_assetmain" control="menuitem">
+			<set property="event" value="bim_asset_select"/>
+			<set property="id" value="ss_assetmain4"/>
+			<set property="image" value="bim/menu_icon_model.gif"/>
+			<set property="label" value="Building model"/>
+			<set property="sigoption" value="BIMLOOKUP"/>
+		</add>
+		<add container="select_assets_sub" control="menuitem">
+			<set property="event" value="bim_asset_select_multi"/>
+			<set property="id" value="select_assets_model"/>
+			<set property="label" value="Building model"/>
+			<set property="sigoption" value="BIMLOOKUP"/>
+		</add>
+	</systemlib>
+</updatescript>

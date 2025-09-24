@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script SYSTEM "script.dtd">
+<script author="sean.fitzpatrick1" scriptname="V9000_06">
+    <description>Add BIM Forge Viewer PlugIn custom logger to Maximo's logging application</description>
+    <statements>
+        <insert table="MAXLOGGER" ignore_duplicates="true">
+            <insertrow>
+                <columnvalue column="LOGGER" string="bimfv" />
+                <columnvalue column="LOGLEVEL" string="ERROR" />
+                <columnvalue column="LOGKEY" string="log4j.logger.maximo.bimfv.app" />
+                <columnvalue column="ACTIVE" boolean="true" />
+                <columnvalue column="INTERNAL" boolean="true" />
+            </insertrow>
+        </insert>
+    </statements>
+</script>

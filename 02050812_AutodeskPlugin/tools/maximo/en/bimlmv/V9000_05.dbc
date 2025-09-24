@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script SYSTEM "script.dtd">
+<script author="sean.fitzpatrick1" scriptname="V9000_05">
+	<description>Relationship to BIMLMVDEFECTVIEW table to retrieve all records by BIMLMVSAVEDVIEWID</description>
+	<check skip_script="true">
+		<check_query query="select 1 from maxobject where not exists (select 1 from maxobject where objectname = 'BIMLMVDEFECTVIEW')"/>
+	</check> 
+	<statements>
+		<add_attributes object="BIMLMVDEFECTVIEW">
+			<attrdef attribute="BIMLMVSAVEDVIEWID" sameasobject="BIMLMVSAVEDVIEW" sameasattribute="BIMLMVSAVEDVIEWID" title="ID of the saved view" remarks="Primary key of saved snapshot in the BIMLMVSAVEDVIEW table" />
+		</add_attributes>
+		<create_relationship parent="BIMLMVSAVEDVIEW" name="BIMDEFECTVIEWS" child="BIMLMVDEFECTVIEW" whereclause="bimlmvsavedviewid=:bimlmvsavedviewid" remarks="Relationship to BIMLMVDEFECTVIEW table." />
+	</statements>
+</script>

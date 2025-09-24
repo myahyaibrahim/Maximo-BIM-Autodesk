@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script SYSTEM "script.dtd">
+<script author="caihua.liu" scriptname="V8300_01">
+	<description>Add permission configuration</description>
+	<statements>
+		<insert table="OBJECTAPPAUTH" ignore_duplicates="true">
+			<insertrow>
+		        <columnvalue column="CONTEXT" string="/rest/mbo" />
+		        <columnvalue column="OBJECTNAME" string="MAXATTRIBUTE" />
+		        <columnvalue column="AUTHAPP" string="LOCATION" />
+	      	</insertrow>
+	      	<insertrow>
+		        <columnvalue column="CONTEXT" string="/rest/mbo" />
+		        <columnvalue column="OBJECTNAME" string="BIMLMVSAVEDVIEW" />
+		        <columnvalue column="AUTHAPP" string="LOCATION" />
+	      	</insertrow>
+	      	<insertrow>
+		        <columnvalue column="CONTEXT" string="/rest/mbo" />
+		        <columnvalue column="OBJECTNAME" string="BIMLMVWORKVIEW" />
+		        <columnvalue column="AUTHAPP" string="WOTRACK" />
+	      	</insertrow>
+	   </insert>
+	</statements>
+</script>

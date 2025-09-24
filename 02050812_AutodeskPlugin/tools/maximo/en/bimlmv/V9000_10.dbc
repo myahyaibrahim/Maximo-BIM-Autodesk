@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script SYSTEM "script.dtd">
+<script author="harshita.chouhan" scriptname="V9000_10">
+	<description>Add sigoption and control conditions for conversion method field in BIM Viewer upload model dialog.</description>
+	<statements>
+		<!-- add sigoption for showing or hiding conversion method dropdown in upload model file dialog -->
+		<add_sigoption app="BIMMODELS" optionname="SHOWCONVERSIONMETHOD" langcode="EN"
+			esigenabled="false" visible="true"
+			description="Show or hide conversion method dropdown in upload model file dialog." />
+
+		<!-- update control group for 'SHOWCONVERSIONMETHOD' option -->
+		<freeform description="Update CTRLGROUP">
+			<sql target="all"> insert into ctrlgroup (ctrlgroupid, groupname, optionname, app, groupseq)
+				select ctrlgroupseq.nextval, varvalue, 'SHOWCONVERSIONMETHOD', 'BIMMODELS', 10 from maxvars
+				where varname = 'ALLUSERGROUP';
+			</sql>
+		</freeform>
+
+		<!-- create condition for showing or hiding conversion method field -->
+		<insert table="CONDITION">
+			<insertrow>
+				<columnvalue column="CONDITIONNUM" string="IFCMODELFILE" />
+				<columnvalue column="TYPE" string="EXPRESSION" />
+				<columnvalue column="EXPRESSION" string=":objectkey is not null and :objectkey like '%.ifc'" />
+				<columnvalue column="DESCRIPTION" string="Show the conversion method dropdown only when the uploaded model file is an ifc file." />
+				<columnvalue column="NOCACHING" number="1" />
+			</insertrow>
+		</insert>
+
+		<!-- update control condition for 'SHOWCONVERSIONMETHOD' option -->
+		<freeform description="Updates CTRLCONDITION">
+			<sql target="all"> insert into ctrlcondition (ctrlconditionid, ctrlgroupid, conditionnum,
+				conditionseq, reevaluate) select ctrlconditionseq.nextval, ctrlgroupid, 'IFCMODELFILE', 10,
+				1 from ctrlgroup where optionname = 'SHOWCONVERSIONMETHOD' and app = 'BIMMODELS';</sql>
+		</freeform>
+
+		<!-- grant access to all user groups for 'SHOWCONVERSIONMETHOD' option -->
+		<insert table="APPLICATIONAUTH" ignore_duplicates="true">
+			<insertrow>
+				<columnvalue column="GROUPNAME" string="EVERYONE" />
+				<columnvalue column="APP" string="BIMMODELS" />
+				<columnvalue column="OPTIONNAME" string="SHOWCONVERSIONMETHOD" />
+			</insertrow>
+		</insert>
+
+		<!-- update control condition property for 'SHOWCONVERSIONMETHOD' option -->
+		<freeform description="Updates CTRLCONDPROP">
+			<!-- show the conversion method dropdown for ifc model files -->
+			<sql target="all">insert into ctrlcondprop (ctrlcondpropid, property, propertyvalue,
+				conditionresult, ctrlconditionid) select ctrlcondpropseq.nextval, 'display', 'true', 1,
+				ctrlconditionid from ctrlgroup, ctrlcondition where ctrlgroup.ctrlgroupid =
+				ctrlcondition.ctrlgroupid and optionname ='SHOWCONVERSIONMETHOD' and app ='BIMMODELS';
+			</sql>
+			<!-- hide the conversion method dropdown for non ifc model files -->
+			<sql target="all">insert into ctrlcondprop (ctrlcondpropid, property, propertyvalue,
+				conditionresult, ctrlconditionid) select ctrlcondpropseq.nextval, 'display', 'false', 0,
+				ctrlconditionid from ctrlgroup, ctrlcondition where ctrlgroup.ctrlgroupid =
+				ctrlcondition.ctrlgroupid and optionname ='SHOWCONVERSIONMETHOD' and app ='BIMMODELS';
+			</sql>
+		</freeform>
+	</statements>
+</script>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script SYSTEM "script.dtd">
+<script author="harshita.chouhan" scriptname="V9000_09">
+	<description>Add attribute for storing conversion method in BIMLMVMODEL table.</description>
+	<statements>
+		<specify_synonym_domain maxtype="LOWER" length="20" domainid="CONVERSIONMETHOD"
+			description="Synonym domain for conversion method field">
+			<synonymvalueinfo value="legacy" maxvalue="legacy" description="Legacy (v1)" defaults="true" />
+			<synonymvalueinfo value="modern" maxvalue="modern" description="Modern (v2)" defaults="true" />
+			<synonymvalueinfo value="v3" maxvalue="v3" description="v3" defaults="true" />
+		</specify_synonym_domain>
+		<add_attributes object="BIMLMVMODEL">
+			<attrdef attribute="CONVERSIONMETHOD" title="Conversion Method" maxtype="LOWER" length="20"
+				persistent="true" required="false" domain="CONVERSIONMETHOD" defaultvalue="legacy"
+				remarks="A process that translates .ifc files into a format that can be viewed in the browser. By default, the conversion method is Legacy (v1). For optimal viewing of .ifc 4v3 files, you can use the Modern (v2) or v3 conversion method." />
+		</add_attributes>
+	</statements>
+</script>

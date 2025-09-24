@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updatescript version="7.1.0.0">
+	<app apptype="webclient" id="plusxlocation">
+		<modify control="plusxlocation">
+			<set property="beanclass" value="psdi.webclient.beans.bim.viewer.BIMPlusXLocationAppBean"/>
+		</modify>
+	</app>
+</updatescript>
