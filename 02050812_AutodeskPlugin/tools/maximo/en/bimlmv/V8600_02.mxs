@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<updatescript version="7.1.0.0">
-	<app apptype="webclient" id="plusxlocation">
-		<modify control="bim_markup_help">
-			<set property="innerhtml" value="To create a defect, save the current view and then click the Enter markup mode icon. After you create the markup, click the Save markup with defect icon. You can save one markup per defect. &lt;a href=&quot;https://www.ibm.com/docs/en/mci/continuous-delivery?topic=defects-using-model&quot; target=&quot;_new&quot;&gt;Learn more about creating defects on a model&lt;/a&gt;."/>
-		</modify>
-	</app>
-</updatescript>

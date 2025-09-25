@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE script SYSTEM "script.dtd">
-<script author="Sean.Fitzpatrick1" scriptname="V8600_03">
-	<description>Upgrade Forge Viewer version 7.3</description>
-	<statements>
-		<set_property name='bim.viewer.LMV.viewer.style' value='https://developer.api.autodesk.com/modelderivative/v2/viewers/7.3/style.min.css'/>
-		<set_property name='bim.viewer.LMV.viewer.viewer3D' value='https://developer.api.autodesk.com/modelderivative/v2/viewers/7.3/viewer3D.min.js'/>
-	</statements>
-</script>
